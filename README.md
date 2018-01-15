@@ -14,3 +14,7 @@ Setup
 ```cd truffle ```
 
 ``` ./tcm.sh ```
+
+``` cd ../ ```
+
+``` gulp serve ```

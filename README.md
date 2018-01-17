@@ -63,14 +63,14 @@ Git Clone and then cd into the project
     * ``` miner.start() ```
     * ``` miner.stop() ```
 
-13. You will to export the keystore of the account to MetaMask
+13. You will need to export the keystore of the account to MetaMask
   * Open MetaMask in your browser
   * Click on the icon of a person with circular arrows around them
   * Click _Import Account_
   * Click on _Select Type -> JSON File_
   * Click on _Choose File_ and go to _sample-dapp/data/keystore_ and choose the _last_ file
     * The last file should be the newest account created.
-  * If all has gone well, your created account will be imported to meta mask with ether 
+  * If all has gone well, your created account will be imported to meta mask with Ether 
     
 14. Go back to the terminal with the geth console
   * Unlock your new account:

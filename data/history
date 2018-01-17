@@ -109,3 +109,13 @@ miner.stop()
 miner.start()
 miner.stop()
 ls
+personal.listAccounts
+miner.start()
+miner.stop()
+miner.start()
+miner.stop()
+miner.start()
+miner.stop()
+miner.start()
+miner.stop()
+ls

@@ -8,18 +8,17 @@
  * 
  * 
  */
-var contract_abidefinition = [{"constant":false,"inputs":[{"name":"sentMessage","type":"string"}],"name":"setMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"getLastAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"getMessage","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"initMessage","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[],"name":"MessageWritten","type":"event"}];
+var contract_abidefinition = [{ "constant": false, "inputs": [{ "name": "sentMessage", "type": "string" }], "name": "setMessage", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "getLastAddress", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "getMessage", "outputs": [{ "name": "", "type": "string" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "name": "initMessage", "type": "string" }], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [], "name": "MessageWritten", "type": "event" }];
 
 var contract_bytecode = '0x6060604052341561000f57600080fd5b6103b88061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063368b87721461005c57806371a2ee52146100b9578063ce6d41de1461010e575b600080fd5b341561006757600080fd5b6100b7600480803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509190505061019c565b005b34156100c457600080fd5b6100cc6101be565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011957600080fd5b6101216101e8565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610161578082015181840152602081019050610146565b50505050905090810190601f16801561018e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b80600090805190602001906101b29291906102d3565b506101bb610290565b50565b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6101f0610353565b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102865780601f1061025b57610100808354040283529160200191610286565b820191906000526020600020905b81548152906001019060200180831161026957829003601f168201915b5050505050905090565b33600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061031457805160ff1916838001178555610342565b82800160010185558215610342579182015b82811115610341578251825591602001919060010190610326565b5b50905061034f9190610367565b5090565b602060405190810160405280600081525090565b61038991905b8082111561038557600081600090555060010161036d565b5090565b905600a165627a7a723058201654084eb29c7bd7dfb2af0af716064014a036a42e256c97a2a5307b4d85b9290029';
 var contract_address = '0x9f6c95002db82022e2805d9b5c4b1f1c823d3197';
 var contract;
 var filterWatch;
 
-
 /**
  * Web page load listener
  */
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     /***
      * Commented out the below code because currently watching events seems to only work from using the web3 instance from the private chain
      * 
@@ -39,13 +38,12 @@ window.addEventListener('load', function() {
     //     window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
     // }
 
-    
+
     //Web3 instance from the private geth console
     window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 
     startApp();
 });
-
 
 /**
  * Function that kicks off the app
@@ -74,15 +72,12 @@ function startApp() {
  */
 
 function getNodeVersion() {
-    web3.version.getNode(function(error, result) {
-        if (error) console.log("There was an error: " + error);
-        else {
+    web3.version.getNode(function (error, result) {
+        if (error) console.log("There was an error: " + error);else {
             console.log("There was a result: " + result);
         }
     });
 }
-
-
 
 /**
  * Functions to interact with deployed contract
@@ -95,13 +90,13 @@ function retrieveDeployedContract() {
 
 function getMessageFromContract(contract) {
     console.log("Getting message from contract");
-    contract.getMessage.call(function(error, result) {
+    contract.getMessage.call(function (error, result) {
         if (error) {
             console.log("There was an error");
             updateUI('message_set', "There was an error", true);
         } else {
             updateUI('message_set', result, false);
-            console.log("Updated UI message successfully"); 
+            console.log("Updated UI message successfully");
             console.log(result);
 
             getLastSentAddress();
@@ -110,25 +105,23 @@ function getMessageFromContract(contract) {
 }
 
 function setMessageInContract(message) {
-    contract.setMessage.sendTransaction(message, function(error, result) {
+    contract.setMessage.sendTransaction(message, function (error, result) {
         if (error) {
             console.log(error);
-        }
-        else {
-            console.log('Now printing the reuslt')
+        } else {
+            console.log('Now printing the reuslt');
             console.log(result);
         }
     });
 }
 
 function getLastSentAddress() {
-    console.log("Calling get last sent address")
-    contract.getLastAddress.call(function(error, result) {
+    console.log("Calling get last sent address");
+    contract.getLastAddress.call(function (error, result) {
         if (error) {
             console.log("There was an error");
             updateUI('last_address', "There was an error", false);
-        }
-        else {
+        } else {
             updateUI('last_address', result, false);
         }
     });
@@ -138,15 +131,11 @@ function getLastSentAddress() {
  * Filters for monitoring change in deployed contract state
  */
 function watchForEvent() {
-    contract.MessageWritten({target: "MessageWritten"}, {fromBlock: 0, toBlock: 'latest'}).watch(function(error, result) {
-        if (error)
-            console.log("error")
-        else {
+    contract.MessageWritten({ target: "MessageWritten" }, { fromBlock: 0, toBlock: 'latest' }).watch(function (error, result) {
+        if (error) console.log("error");else {
             console.log("events fired");
             getMessageFromContract(contract);
         }
-            
     });
-    
 }
-
+//# sourceMappingURL=main.js.map

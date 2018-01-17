@@ -40,7 +40,7 @@ Git Clone and then cd into the project
 8. Go back to the second terminal and copy the deployed address of the contract _Interact_
   * E.g Deploying Interact... _Interact: 0x9f6c95002db82022e2805d9b5c4b1f1c823d3197_
   
-9. Go back to teh first terminal
+9. Go back to the first terminal
   * ` miner.stop()`
   
 10. Open the project in an IDE of your choice
@@ -51,7 +51,7 @@ Git Clone and then cd into the project
     * ` gulp serve `
     
 11. Make sure you are logged into MetaMask
-  * If you don't have any accounts that are linked to this private chain on metamask with ether, then create a new account  and start mining to get ether.
+  * If you don't have any accounts that are linked to this private chain on MetaMask with Ether, then create a new account  and start mining to get Ether.
   * Remember to use a memorable passphrase since we are going to export this account.
   
  12. Go to the geth console
